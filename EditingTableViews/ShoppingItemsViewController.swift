@@ -18,6 +18,19 @@ class ShoppingItemsViewController: UIViewController {
         loadShoppingItems()
     }
     
+    // MARK: - IBActions
+    
+    @IBAction func toggleEditMode(_ sender: UIButton) {
+        switch shoppingItemsTableView.isEditing {
+        case true:
+            shoppingItemsTableView.setEditing(false, animated: true)
+            sender.setTitle("Edit", for: .normal)
+        case false:
+            shoppingItemsTableView.setEditing(true, animated: true)
+            sender.setTitle("Stop Editing", for: .normal)
+        }
+    }
+    
     // MARK: - Private Methods
     
     private func loadShoppingItems() {
@@ -47,4 +60,13 @@ extension ShoppingItemsViewController: UITableViewDataSource {
     }
 }
 
-extension ShoppingItemsViewController: UITableViewDelegate { }
+extension ShoppingItemsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            shoppingItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default: break
+        }
+    }
+}
