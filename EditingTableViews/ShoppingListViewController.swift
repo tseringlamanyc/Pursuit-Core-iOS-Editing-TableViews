@@ -13,6 +13,10 @@ class ShoppingListViewController: UIViewController {
     var shoppingList = [ShoppingItem]()
     @IBOutlet weak var shoppingListTableView: UITableView!
     
+    @IBAction func unwind(segue: UIStoryboardSegue){
+        
+    }
+    
     @IBAction func editButton(_ sender: UIButton) {
         if shoppingListTableView.isEditing {
             shoppingListTableView.setEditing(false, animated: true)
