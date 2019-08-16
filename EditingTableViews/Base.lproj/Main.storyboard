@@ -153,6 +153,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="V4D-d1-WBU"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="Wnd-QC-vVZ" id="RE2-vZ-Jc1"/>
+                        <outlet property="priceTextField" destination="qrh-to-kVf" id="Pln-6d-bFl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2W-xY-0N5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4yb-gW-D3E" userLabel="Exit" sceneMemberID="exit"/>
