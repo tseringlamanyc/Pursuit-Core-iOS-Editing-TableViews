@@ -29,7 +29,6 @@ class ShoppingListViewController: UIViewController {
         super.viewDidLoad()
         getShoppingData()
         configureTableView()
-        shoppingListTableView.isEditing = false
         // Do any additional setup after loading the view.
     }
     
@@ -54,7 +53,9 @@ class ShoppingListViewController: UIViewController {
     */
 
 }
-extension ShoppingListViewController: UITableViewDataSource, UITableViewDelegate {
+
+// MARK: -- Table View Data Source
+extension ShoppingListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shoppingList.count
     }
@@ -67,8 +68,18 @@ extension ShoppingListViewController: UITableViewDataSource, UITableViewDelegate
         cell.detailTextLabel?.text = selectedITems.price.description
         return cell
     }
-    
-    
-    
-    
+}
+
+//MARK: -- Table View Delegate
+extension ShoppingListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            shoppingList.remove(at: indexPath.row)
+            shoppingListTableView.deleteRows(at: [indexPath], with: .fade)
+            print("we hit delete")
+        default:
+            print("we did something else")
+        }
+    }
 }
