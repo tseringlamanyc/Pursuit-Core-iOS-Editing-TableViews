@@ -58,7 +58,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cNs-A5-Nok"/>
                     </view>
-                    <navigationItem key="navigationItem" id="N6p-Jq-5l4"/>
+                    <navigationItem key="navigationItem" id="N6p-Jq-5l4">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="qb7-9q-nMf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G9X-2L-SNT">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editButton:" destination="BHe-G8-WaQ" eventType="touchUpInside" id="hvF-wn-CDc"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="shoppingListTableView" destination="Aye-vE-5fz" id="KkG-4v-aHb"/>
                     </connections>

@@ -13,11 +13,23 @@ class ShoppingListViewController: UIViewController {
     var shoppingList = [ShoppingItem]()
     @IBOutlet weak var shoppingListTableView: UITableView!
     
+    @IBAction func editButton(_ sender: UIButton) {
+        if shoppingListTableView.isEditing {
+            shoppingListTableView.setEditing(false, animated: true)
+            sender.setTitle("Edit", for: .normal)
+            //set it so that it's not editing
+        } else {
+            shoppingListTableView.setEditing(true, animated: true)
+            sender.setTitle("Done", for: .normal)
+//            set it so that it is editing
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getShoppingData()
         configureTableView()
-
+        shoppingListTableView.isEditing = false
         // Do any additional setup after loading the view.
     }
     
