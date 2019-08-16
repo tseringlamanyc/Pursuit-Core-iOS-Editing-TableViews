@@ -14,7 +14,21 @@ class ShoppingListViewController: UIViewController {
     @IBOutlet weak var shoppingListTableView: UITableView!
     
     @IBAction func unwind(segue: UIStoryboardSegue){
+        //suppose the source is an AddItemViewController
+        guard let addItemVC = segue.source as? AddItemViewController else {
+            fatalError()
+        }
+       guard let textFromName = addItemVC.nameTextField.text, let textFromPrice = addItemVC.priceTextField.text, let priceAsDouble = Double(textFromPrice) else {
+            //maybe alert
+            fatalError()
+        }
         
+        let newItem = ShoppingItem(name: textFromName, price: priceAsDouble)
+        shoppingList.append(newItem)
+//shoppingList.count -> always be able to use this
+        let lastIndex = shoppingListTableView.numberOfRows(inSection: 0)
+        let lastIndexPath = IndexPath(row: lastIndex, section: 0)
+        shoppingListTableView.insertRows(at: [lastIndexPath], with: .automatic)
     }
     
     @IBAction func editButton(_ sender: UIButton) {
