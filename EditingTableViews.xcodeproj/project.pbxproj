@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52FB08352385A33F0046A2A6 /* AddlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FB08342385A33F0046A2A6 /* AddlingViewController.swift */; };
 		CD8F80132305F3D300CB87B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8F80122305F3D300CB87B0 /* AppDelegate.swift */; };
 		CD8F80152305F3D300CB87B0 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8F80142305F3D300CB87B0 /* ShoppingListViewController.swift */; };
 		CD8F80182305F3D300CB87B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8F80162305F3D300CB87B0 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52FB08342385A33F0046A2A6 /* AddlingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddlingViewController.swift; sourceTree = "<group>"; };
 		CD8F800F2305F3D300CB87B0 /* EditingTableViews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EditingTableViews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8F80122305F3D300CB87B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8F80142305F3D300CB87B0 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				CD8F80142305F3D300CB87B0 /* ShoppingListViewController.swift */,
 				CD8F80242305F41A00CB87B0 /* ShoppingItem.swift */,
 				CD8F80162305F3D300CB87B0 /* Main.storyboard */,
+				52FB08342385A33F0046A2A6 /* AddlingViewController.swift */,
 				CD8F80192305F3DE00CB87B0 /* Assets.xcassets */,
 				CD8F801B2305F3DE00CB87B0 /* LaunchScreen.storyboard */,
 				CD8F801E2305F3DE00CB87B0 /* Info.plist */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FB08352385A33F0046A2A6 /* AddlingViewController.swift in Sources */,
 				CD8F80252305F41A00CB87B0 /* ShoppingItem.swift in Sources */,
 				CD8F80152305F3D300CB87B0 /* ShoppingListViewController.swift in Sources */,
 				CD8F80132305F3D300CB87B0 /* AppDelegate.swift in Sources */,

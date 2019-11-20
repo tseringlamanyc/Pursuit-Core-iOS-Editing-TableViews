@@ -4,6 +4,7 @@ class ShoppingListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     private var data = [ShoppingItem]() {
         didSet {
@@ -16,6 +17,10 @@ class ShoppingListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         data = ShoppingItemFetchingClient.getShoppingItems()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        <#code#>
     }
     
     
