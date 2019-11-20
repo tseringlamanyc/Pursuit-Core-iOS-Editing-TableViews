@@ -14,6 +14,7 @@ class ShoppingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         data = ShoppingItemFetchingClient.getShoppingItems()
     }
     
@@ -26,8 +27,8 @@ class ShoppingListViewController: UIViewController {
         case false:
             tableView.setEditing(true, animated: false)
             sender.setTitle("Stop Editing", for: .normal)
+        }
     }
-}
 }
 
 extension ShoppingListViewController: UITableViewDataSource {
@@ -37,10 +38,25 @@ extension ShoppingListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingItemCell", for: indexPath)
-        let items = data[indexPath.row]
-        cell.textLabel?.text = items.name
-        cell.detailTextLabel?.text = "$\(items.price)"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingItemCell") else {
+            fatalError("Unknown Reuse ID")
+        }
+        let shoppingItem = data[indexPath.row]
+        cell.textLabel?.text = shoppingItem.name
+        cell.detailTextLabel?.text = "$\(shoppingItem.price)"
         return cell
+    }
+}
+
+extension ShoppingListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            data.remove(at: indexPath.row)
+            tableView.deselectRow(at: indexPath, animated: true)
+        default:
+            break
+        }
     }
 }
