@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping List View Controller-->
+        <!--Shopping Items View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ShoppingListViewController" customModule="EditingTableViews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ShoppingItemsViewController" customModule="EditingTableViews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                                 <rect key="frame" x="20" y="40" width="148" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
-                                    <action selector="startEditing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HLC-E5-jt3"/>
+                                    <action selector="editPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g05-d9-zLd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAo-ns-5fR">
@@ -79,19 +79,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="f0n-vf-Euc"/>
                     <connections>
-                        <outlet property="addButton" destination="PAo-ns-5fR" id="HQd-Ey-VKh"/>
-                        <outlet property="editButton" destination="f9w-hX-0Uq" id="Bdo-0g-s8S"/>
-                        <outlet property="tableView" destination="KDD-gY-zVj" id="Yad-Zr-0CJ"/>
+                        <outlet property="editButton" destination="f9w-hX-0Uq" id="BZ2-HM-EPQ"/>
+                        <outlet property="tableView" destination="KDD-gY-zVj" id="U6u-eC-U9G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="133.92857142857142"/>
         </scene>
-        <!--Addling View Controller-->
+        <!--Adding Items View Controller-->
         <scene sceneID="PRR-QD-IdE">
             <objects>
-                <viewController id="p2w-1R-oED" customClass="AddlingViewController" customModule="EditingTableViews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="p2w-1R-oED" customClass="AddingItemsViewController" customModule="EditingTableViews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bj1-Xu-N0T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,19 +101,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kz-bT-qxE">
-                                <rect key="frame" x="20" y="71" width="45" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the item " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kr-PL-k24">
-                                <rect key="frame" x="85" y="61" width="309" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the item " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7kr-PL-k24">
+                                <rect key="frame" x="82" y="61" width="312" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbS-gi-qdy">
-                                <rect key="frame" x="20" y="122" width="39" height="21"/>
+                                <rect key="frame" x="20" y="149" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price of the item " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhP-t0-Bmh">
+                                <rect key="frame" x="76" y="142" width="318" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kz-bT-qxE">
+                                <rect key="frame" x="20" y="68" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -122,16 +126,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0Kz-bT-qxE" firstAttribute="top" secondItem="7gi-Ef-e25" secondAttribute="bottom" constant="30" id="BO1-MO-PkQ"/>
-                            <constraint firstItem="7gi-Ef-e25" firstAttribute="top" secondItem="bgx-kl-Zzd" secondAttribute="top" constant="20" id="DAK-7O-jx8"/>
-                            <constraint firstItem="MbS-gi-qdy" firstAttribute="top" secondItem="0Kz-bT-qxE" secondAttribute="bottom" constant="30" id="GRe-Pc-i4K"/>
-                            <constraint firstItem="7gi-Ef-e25" firstAttribute="leading" secondItem="bgx-kl-Zzd" secondAttribute="leading" constant="20" id="HBo-H1-j2u"/>
-                            <constraint firstItem="bgx-kl-Zzd" firstAttribute="trailing" secondItem="7kr-PL-k24" secondAttribute="trailing" constant="20" id="Jhe-HV-QNO"/>
-                            <constraint firstItem="0Kz-bT-qxE" firstAttribute="leading" secondItem="bgx-kl-Zzd" secondAttribute="leading" constant="20" id="R0E-y1-1wH"/>
-                            <constraint firstItem="bgx-kl-Zzd" firstAttribute="trailing" secondItem="7gi-Ef-e25" secondAttribute="trailing" constant="20" id="lh1-rc-GS8"/>
-                            <constraint firstItem="MbS-gi-qdy" firstAttribute="leading" secondItem="bgx-kl-Zzd" secondAttribute="leading" constant="20" id="vvn-OT-HtE"/>
-                            <constraint firstItem="7kr-PL-k24" firstAttribute="top" secondItem="7gi-Ef-e25" secondAttribute="bottom" constant="20" id="yb8-z4-qZ5"/>
-                            <constraint firstItem="7kr-PL-k24" firstAttribute="leading" secondItem="0Kz-bT-qxE" secondAttribute="trailing" constant="20" id="z6U-NG-Tth"/>
+                            <constraint firstItem="0Kz-bT-qxE" firstAttribute="top" secondItem="7gi-Ef-e25" secondAttribute="bottom" constant="27" id="1wN-fc-0bB"/>
+                            <constraint firstItem="MbS-gi-qdy" firstAttribute="top" secondItem="0Kz-bT-qxE" secondAttribute="bottom" constant="60" id="5yi-J8-gYw"/>
+                            <constraint firstItem="MbS-gi-qdy" firstAttribute="leading" secondItem="bgx-kl-Zzd" secondAttribute="leading" constant="20" id="CNK-9A-AHp"/>
+                            <constraint firstItem="NhP-t0-Bmh" firstAttribute="top" secondItem="7kr-PL-k24" secondAttribute="bottom" constant="47" id="FbS-fd-mEI"/>
+                            <constraint firstItem="NhP-t0-Bmh" firstAttribute="leading" secondItem="MbS-gi-qdy" secondAttribute="trailing" constant="17" id="GsD-QR-0jL"/>
+                            <constraint firstItem="7kr-PL-k24" firstAttribute="top" secondItem="7gi-Ef-e25" secondAttribute="bottom" constant="20" id="KY2-DF-w6l"/>
+                            <constraint firstItem="7kr-PL-k24" firstAttribute="leading" secondItem="0Kz-bT-qxE" secondAttribute="trailing" constant="17" id="RA3-J1-F5S"/>
+                            <constraint firstItem="bgx-kl-Zzd" firstAttribute="trailing" secondItem="7gi-Ef-e25" secondAttribute="trailing" constant="20" id="UWc-Dh-X9f"/>
+                            <constraint firstItem="7gi-Ef-e25" firstAttribute="top" secondItem="bgx-kl-Zzd" secondAttribute="top" constant="20" id="WO2-3P-Ib3"/>
+                            <constraint firstItem="NhP-t0-Bmh" firstAttribute="leading" secondItem="MbS-gi-qdy" secondAttribute="trailing" constant="17" id="XDR-Jq-rmE"/>
+                            <constraint firstItem="7kr-PL-k24" firstAttribute="leading" secondItem="0Kz-bT-qxE" secondAttribute="trailing" constant="17" id="fy0-F6-bXY"/>
+                            <constraint firstItem="0Kz-bT-qxE" firstAttribute="leading" secondItem="bgx-kl-Zzd" secondAttribute="leading" constant="20" id="h6f-5w-gbv"/>
+                            <constraint firstItem="bgx-kl-Zzd" firstAttribute="trailing" secondItem="7kr-PL-k24" secondAttribute="trailing" constant="20" id="imT-Pz-sNo"/>
+                            <constraint firstItem="7gi-Ef-e25" firstAttribute="leading" secondItem="bgx-kl-Zzd" secondAttribute="leading" constant="20" id="uGf-o9-Zgp"/>
+                            <constraint firstItem="bgx-kl-Zzd" firstAttribute="trailing" secondItem="NhP-t0-Bmh" secondAttribute="trailing" constant="20" id="xbi-mv-5GP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bgx-kl-Zzd"/>
                     </view>
