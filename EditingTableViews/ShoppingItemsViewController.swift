@@ -38,7 +38,19 @@ class ShoppingItemsViewController: UIViewController {
     }
     
     @IBAction func unwind(segue: UIStoryboardSegue) {
-
+        guard let createItemVC = segue.source as? AddingItemsViewController else {
+            fatalError("Unknown segue source")
+        }
+        if let itemName = createItemVC.nameText.text,
+            let itemPriceStr = createItemVC.priceText.text,
+            let itemPrice = Double(itemPriceStr) {
+            let newItem = ShoppingItem(name: itemName, price: itemPrice)
+            shoppingItems.append(newItem)
+            let lastRow = tableView.numberOfRows(inSection: 0)
+            let lastIndexPath = IndexPath(row: lastRow, section: 0)
+            tableView.insertRows(at: [lastIndexPath], with: .automatic)
+        }
+        
     }
 }
 
