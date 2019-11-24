@@ -58,4 +58,13 @@ extension ShoppingItemsViewController: UITableViewDataSource {
 
 extension ShoppingItemsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            shoppingItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default: break
+        }
+    }
+    
 }
